@@ -1,20 +1,4 @@
 
-function inicio() {
-    let continuar = prompt("¿Desea continuar calculando categorias de monotributo?").toUpperCase()
-    while (continuar != "NO") {
-        if (continuar == "SI") {
-            resultadoIngBrutos = calcularIngBrutos()
-            resultadoSupAfectada = calcularSupAfectada()
-            resultadoEnergiaConsumida = calcularEnergiaConsumida()
-            resultadoAlquileresDevengados = calcularAlquileresDevengados()
-            alert(calcularCategoriaMaxima(resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados))
-        } else {
-            alert("No entiendo tu respuesta")
-        }
-        continuar = prompt("¿Desea continuar calculando categorias de monotributo?").toUpperCase()
-    }
-    alert("No se calcula mas.")
-}
 
 function calcularIngBrutos() {
     let ingBruto = prompt("Dime tus ingresos brutos de los ultimos 12 meses a la fecha")
@@ -155,6 +139,66 @@ function calcularCategoriaMaxima(resultadoIngBrutos, resultadoSupAfectada, resul
         categoriaMaxima = resultadoAlquileresDevengados
     }
     return categoriaMaxima
+}
+
+function ingresarNombre() {
+    return prompt("Cual es tu nombre?")
+}
+
+function Persona (nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados) {
+    this.nombre = nombre
+    this.resultadoIngBrutos = resultadoIngBrutos
+    this.resultadoSupAfectada = resultadoSupAfectada
+    this.resultadoEnergiaConsumida = resultadoEnergiaConsumida
+    this.resultadoAlquileresDevengados = resultadoAlquileresDevengados
+    this.resultadoCategoriaMaxima = ""
+    this.setResultadoCategoriaMaxima = function(categoria) {
+        this.resultadoCategoriaMaxima = categoria
+    }
+}
+
+function inicio() {
+    let continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
+    while (continuar == null) {
+        continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
+    }
+    continuar = continuar.toUpperCase()
+    let arrayPersonas = []
+    let nombre = ""
+    let resultadoIngBrutos = 0
+    let resultadoSupAfectada = 0 
+    let resultadoEnergiaConsumida = 0 
+    let resultadoAlquileresDevengados = 0
+    let persona = null
+    let resultadoCategoriaMaxima = "" 
+    while (continuar != "NO") {
+        if (continuar == "SI") {
+            nombre = ingresarNombre()
+            resultadoIngBrutos = calcularIngBrutos()
+            resultadoSupAfectada = calcularSupAfectada()
+            resultadoEnergiaConsumida = calcularEnergiaConsumida()
+            resultadoAlquileresDevengados = calcularAlquileresDevengados()
+            persona = new Persona(nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados)
+            resultadoCategoriaMaxima = calcularCategoriaMaxima(persona.resultadoIngBrutos, persona.resultadoSupAfectada, persona.resultadoEnergiaConsumida, persona.resultadoAlquileresDevengados) 
+            persona.setResultadoCategoriaMaxima(resultadoCategoriaMaxima)
+            arrayPersonas.push(persona)
+            console.log(arrayPersonas)
+        } else {
+            alert("No entiendo tu respuesta")
+        }
+        continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
+        while (continuar == null) {
+            continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
+        }
+        continuar = continuar.toUpperCase()
+    }
+    alert("Filtrar usuarios por categoria A")
+    let filtradoCategoria = arrayPersonas
+    filtradoCategoria = filtradoCategoria.filter( (persona) => persona.resultadoCategoriaMaxima == "Categoria A" )
+    console.log("Estos son todos los usuarios de categoria A: ")
+    for (i = 0; i < filtradoCategoria.length; i++) {
+        console.log(filtradoCategoria[i].nombre)
+    }
 }
 
 inicio()
