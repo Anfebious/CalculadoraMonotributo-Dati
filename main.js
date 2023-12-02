@@ -1,7 +1,7 @@
 
 
 function calcularIngBrutos() {
-    let ingBruto = prompt("Dime tus ingresos brutos de los ultimos 12 meses a la fecha")
+    let ingBruto = document.getElementById("ingresosBrutos").value;
     let resultadoIngBrutos = ""
     if (ingBruto <= 1414762.58) {
         resultadoIngBrutos = "Categoria A"
@@ -32,7 +32,7 @@ function calcularIngBrutos() {
 }
 
 function calcularSupAfectada() {
-    let supAfectada = prompt("Dime los m2 afectados a tu actividad a la fecha")
+    let supAfectada = document.getElementById("superficieAfectada").value;
     let resultadoSupAfectada = ""
     if (supAfectada <= 30) {
         resultadoSupAfectada = "Categoria A"
@@ -63,7 +63,7 @@ function calcularSupAfectada() {
 }
 
 function calcularEnergiaConsumida() {
-    let energiaConsumida = prompt("Dime la energia electrica consumida anualmente a la fecha")
+    let energiaConsumida = document.getElementById("energiaConsumida").value;
     let resultadoEnergiaConsumida = ""
     if (energiaConsumida <= 3300) {
         resultadoEnergiaConsumida = "Categoria A"
@@ -94,7 +94,7 @@ function calcularEnergiaConsumida() {
 }
 
 function calcularAlquileresDevengados() {
-    let alquileresDevengados = prompt("Dime el total de alquileres devengados a la fecha")
+    let alquileresDevengados = document.getElementById("alquileresDevengados").value;
     let resultadoAlquileresDevengados = ""
     if (alquileresDevengados <= 230178.48) {
         resultadoAlquileresDevengados = "Categoria A"
@@ -124,8 +124,41 @@ function calcularAlquileresDevengados() {
     return resultadoAlquileresDevengados
 }
 
-function calcularCategoriaMaxima(resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados) {
-    let categoriaMaxima = ""
+function Persona(nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados) {
+    this.nombre = nombre
+    this.resultadoIngBrutos = resultadoIngBrutos
+    this.resultadoSupAfectada = resultadoSupAfectada
+    this.resultadoEnergiaConsumida = resultadoEnergiaConsumida
+    this.resultadoAlquileresDevengados = resultadoAlquileresDevengados
+    this.resultadoCategoriaMaxima = ""
+    this.setResultadoCategoriaMaxima = function (categoria) {
+        this.resultadoCategoriaMaxima = categoria
+    }
+}
+
+function filtrarPorCategoria() {
+    let categoria = document.getElementById("filtroCategorias").value
+    let clave = ""
+    let filtrarPorCategoria = []
+    for (let i = 0; i < localStorage.length; i++) {
+        clave = localStorage.key(i)
+        filtrarPorCategoria.push(JSON.parse(localStorage.getItem(clave)))
+    }
+    filtrarPorCategoria = filtrarPorCategoria.filter((persona) => persona.resultadoCategoriaMaxima == categoria)
+    document.getElementById("resultadoFiltrado").innerHTML = "<p></P>"
+    for (i = 0; i < filtrarPorCategoria.length; i++) {
+        document.getElementById("resultadoFiltrado").insertAdjacentHTML("beforeend", "<p>" + filtrarPorCategoria[i].nombre + "</p>")
+    }
+}
+
+function calcularCategoriaMaxima() {
+    let nombreUsuario = document.getElementById("nombreUsuario").value;
+    let resultadoIngBrutos = calcularIngBrutos();
+    let resultadoSupAfectada = calcularSupAfectada();
+    let resultadoEnergiaConsumida = calcularEnergiaConsumida();
+    let resultadoAlquileresDevengados = calcularAlquileresDevengados();
+    persona = new Persona(nombreUsuario, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados);
+    let categoriaMaxima = "";
     if (resultadoIngBrutos >= categoriaMaxima) {
         categoriaMaxima = resultadoIngBrutos
     }
@@ -138,67 +171,23 @@ function calcularCategoriaMaxima(resultadoIngBrutos, resultadoSupAfectada, resul
     if (resultadoAlquileresDevengados >= categoriaMaxima) {
         categoriaMaxima = resultadoAlquileresDevengados
     }
-    return categoriaMaxima
+    persona.setResultadoCategoriaMaxima(categoriaMaxima)
+    document.getElementById("resultadoCategoriaMaxima").insertAdjacentHTML("beforeend", "<p>" + nombreUsuario + ": " + categoriaMaxima + "</p>")
+    localStorage.setItem(nombreUsuario, JSON.stringify(persona))
 }
 
-function ingresarNombre() {
-    return prompt("Cual es tu nombre?")
-}
+let form = document.getElementById("calculadoraForm")
 
-function Persona (nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados) {
-    this.nombre = nombre
-    this.resultadoIngBrutos = resultadoIngBrutos
-    this.resultadoSupAfectada = resultadoSupAfectada
-    this.resultadoEnergiaConsumida = resultadoEnergiaConsumida
-    this.resultadoAlquileresDevengados = resultadoAlquileresDevengados
-    this.resultadoCategoriaMaxima = ""
-    this.setResultadoCategoriaMaxima = function(categoria) {
-        this.resultadoCategoriaMaxima = categoria
-    }
-}
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+})
 
-function inicio() {
-    let continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
-    while (continuar == null) {
-        continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
-    }
-    continuar = continuar.toUpperCase()
-    let arrayPersonas = []
-    let nombre = ""
-    let resultadoIngBrutos = 0
-    let resultadoSupAfectada = 0 
-    let resultadoEnergiaConsumida = 0 
-    let resultadoAlquileresDevengados = 0
-    let persona = null
-    let resultadoCategoriaMaxima = "" 
-    while (continuar != "NO") {
-        if (continuar == "SI") {
-            nombre = ingresarNombre()
-            resultadoIngBrutos = calcularIngBrutos()
-            resultadoSupAfectada = calcularSupAfectada()
-            resultadoEnergiaConsumida = calcularEnergiaConsumida()
-            resultadoAlquileresDevengados = calcularAlquileresDevengados()
-            persona = new Persona(nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados)
-            resultadoCategoriaMaxima = calcularCategoriaMaxima(persona.resultadoIngBrutos, persona.resultadoSupAfectada, persona.resultadoEnergiaConsumida, persona.resultadoAlquileresDevengados) 
-            persona.setResultadoCategoriaMaxima(resultadoCategoriaMaxima)
-            arrayPersonas.push(persona)
-            console.log(arrayPersonas)
-        } else {
-            alert("No entiendo tu respuesta")
-        }
-        continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
-        while (continuar == null) {
-            continuar = prompt("¿Desea continuar calculando categorias de monotributo?")
-        }
-        continuar = continuar.toUpperCase()
-    }
-    alert("Filtrar usuarios por categoria A")
-    let filtradoCategoria = arrayPersonas
-    filtradoCategoria = filtradoCategoria.filter( (persona) => persona.resultadoCategoriaMaxima == "Categoria A" )
-    console.log("Estos son todos los usuarios de categoria A: ")
-    for (i = 0; i < filtradoCategoria.length; i++) {
-        console.log(filtradoCategoria[i].nombre)
-    }
-}
+let boton = document.getElementById("botonCategoriaMaxima")
 
-inicio()
+boton.addEventListener("click", calcularCategoriaMaxima)
+
+let boton2 = document.getElementById("filtrarCategorias")
+
+boton2.addEventListener("click", filtrarPorCategoria)
+
+localStorage.clear()

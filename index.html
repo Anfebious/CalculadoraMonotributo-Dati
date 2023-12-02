@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Monotributo</title>
 </head>
+
 <body>
-    
+
+    <h1>Calculadora de Monotributo</h1>
+    <form id="calculadoraForm">
+        <div>
+            <label>Nombre del usuario
+                <br>
+                <input id="nombreUsuario" type="text">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label>Ingresos brutos anuales
+                <br>
+                <input id="ingresosBrutos" type="text">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label>Superficie afectada a la actividad
+                <br>
+                <input id="superficieAfectada" type="text">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label>Consumo de energia anual
+                <br>
+                <input id="energiaConsumida" type="text">
+            </label>
+        </div>
+        <br>
+        <div>
+            <label>Monto anual de alquileres devengados
+                <br>
+                <input id="alquileresDevengados" type="text">
+            </label>
+        </div>
+        <br>
+        <div>
+            <button id="botonCategoriaMaxima">Calcular categoria Maxima</button>
+        </div>
+        <br>
+        <div>
+            <h2>Categoria de monotributo</h2>
+            <p id="resultadoCategoriaMaxima"></p>
+        </div>
+        <br>
+        <div>
+            <select id="filtroCategorias">
+                <option value="Categoria A">Categoria A</option>
+                <option value="Categoria B">Categoria B</option>
+                <option value="Categoria C">Categoria C</option>
+                <option value="Categoria D">Categoria D</option>
+                <option value="Categoria E">Categoria E</option>
+                <option value="Categoria F">Categoria F</option>
+                <option value="Categoria G">Categoria G</option>
+                <option value="Categoria H">Categoria H</option>
+                <option value="Categoria I">Categoria I</option>
+                <option value="Categoria J">Categoria J</option>
+                <option value="Categoria K">Categoria K</option>
+                <option value="Regimen general - IVA">Regimen general - IVA</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <button id="filtrarCategorias">Filtrar usuario por categoria seleccionada</button>
+        </div>
+        <div>
+            <h2>Usuarios filtrados</h2>
+            <p id="resultadoFiltrado"></p>
+        </div>
+    </form>
     <script src="./main.js"></script>
 </body>
+
 </html>
