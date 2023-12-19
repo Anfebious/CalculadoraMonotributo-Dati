@@ -1,60 +1,62 @@
 
-
 function calcularIngBrutos() {
     let ingBruto = document.getElementById("ingresosBrutos").value;
+    (verificarNumero(ingBruto)) ? ingBruto = ingBruto : ingBruto = 0
     let resultadoIngBrutos = ""
-    if (ingBruto <= 1414762.58) {
+    if (ingBruto <= categorias.categoriaA.ingBrutos) {
         resultadoIngBrutos = "Categoria A"
-    } else if (ingBruto <= 2103025.45) {
+    } else if (ingBruto <= categorias.categoriaB.ingBrutos) {
         resultadoIngBrutos = "Categoria B"
-    } else if (ingBruto <= 2944235.60) {
+    } else if (ingBruto <= categorias.categoriaC.ingBrutos) {
         resultadoIngBrutos = "Categoria C"
-    } else if (ingBruto <= 3656604.33) {
+    } else if (ingBruto <= categorias.categoriaD.ingBrutos) {
         resultadoIngBrutos = "Categoria D"
-    } else if (ingBruto <= 4305799.15) {
+    } else if (ingBruto <= categorias.categoriaE.ingBrutos) {
         resultadoIngBrutos = "Categoria E"
-    } else if (ingBruto <= 5382248.94) {
+    } else if (ingBruto <= categorias.categoriaF.ingBrutos) {
         resultadoIngBrutos = "Categoria F"
-    } else if (ingBruto <= 6458698.71) {
+    } else if (ingBruto <= categorias.categoriaG.ingBrutos) {
         resultadoIngBrutos = "Categoria G"
-    } else if (ingBruto <= 7996484.12) {
+    } else if (ingBruto <= categorias.categoriaH.ingBrutos) {
         resultadoIngBrutos = "Categoria H"
-    } else if (ingBruto <= 8949911.06) {
+    } else if (ingBruto <= categorias.categoriaI.ingBrutos) {
         resultadoIngBrutos = "Categoria I"
-    } else if (ingBruto <= 10257028.68) {
+    } else if (ingBruto <= categorias.categoriaJ.ingBrutos) {
         resultadoIngBrutos = "Categoria J"
-    } else if (ingBruto <= 11379612.01) {
+    } else if (ingBruto <= categorias.categoriaK.ingBrutos) {
         resultadoIngBrutos = "Categoria K"
     } else {
         resultadoIngBrutos = "Regimen general - IVA"
     }
+    console.log(ingBruto)
     return resultadoIngBrutos
 }
 
 function calcularSupAfectada() {
     let supAfectada = document.getElementById("superficieAfectada").value;
+    (verificarNumero(supAfectada)) ? supAfectada = supAfectada : supAfectada = 0
     let resultadoSupAfectada = ""
-    if (supAfectada <= 30) {
+    if (supAfectada <= categorias.categoriaA.supAfectada) {
         resultadoSupAfectada = "Categoria A"
-    } else if (supAfectada <= 45) {
+    } else if (supAfectada <= categorias.categoriaB.supAfectada) {
         resultadoSupAfectada = "Categoria B"
-    } else if (supAfectada <= 60) {
+    } else if (supAfectada <= categorias.categoriaC.supAfectada) {
         resultadoSupAfectada = "Categoria C"
-    } else if (supAfectada <= 85) {
+    } else if (supAfectada <= categorias.categoriaD.supAfectada) {
         resultadoSupAfectada = "Categoria D"
-    } else if (supAfectada <= 110) {
+    } else if (supAfectada <= categorias.categoriaE.supAfectada) {
         resultadoSupAfectada = "Categoria E"
-    } else if (supAfectada <= 150) {
+    } else if (supAfectada <= categorias.categoriaF.supAfectada) {
         resultadoSupAfectada = "Categoria F"
-    } else if (supAfectada <= 200) {
+    } else if (supAfectada <= categorias.categoriaG.supAfectada) {
         resultadoSupAfectada = "Categoria G"
-    } else if (supAfectada <= 200) {
+    } else if (supAfectada <= categorias.categoriaH.supAfectada) {
         resultadoSupAfectada = "Categoria H"
-    } else if (supAfectada <= 200) {
+    } else if (supAfectada <= categorias.categoriaI.supAfectada) {
         resultadoSupAfectada = "Categoria I"
-    } else if (supAfectada <= 200) {
+    } else if (supAfectada <= categorias.categoriaJ.supAfectada) {
         resultadoSupAfectada = "Categoria J"
-    } else if (supAfectada <= 200) {
+    } else if (supAfectada <= categorias.categoriaK.supAfectada) {
         resultadoSupAfectada = "Categoria K"
     } else {
         resultadoSupAfectada = "Regimen general - IVA"
@@ -64,28 +66,29 @@ function calcularSupAfectada() {
 
 function calcularEnergiaConsumida() {
     let energiaConsumida = document.getElementById("energiaConsumida").value;
+    (verificarNumero(energiaConsumida)) ? energiaConsumida = energiaConsumida : energiaConsumida = 0
     let resultadoEnergiaConsumida = ""
-    if (energiaConsumida <= 3300) {
+    if (energiaConsumida <= categorias.categoriaA.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria A"
-    } else if (energiaConsumida <= 5000) {
+    } else if (energiaConsumida <= categorias.categoriaB.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria B"
-    } else if (energiaConsumida <= 6700) {
+    } else if (energiaConsumida <= categorias.categoriaC.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria C"
-    } else if (energiaConsumida <= 10000) {
+    } else if (energiaConsumida <= categorias.categoriaD.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria D"
-    } else if (energiaConsumida <= 13000) {
+    } else if (energiaConsumida <= categorias.categoriaE.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria E"
-    } else if (energiaConsumida <= 16500) {
+    } else if (energiaConsumida <= categorias.categoriaF.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria F"
-    } else if (energiaConsumida <= 20000) {
+    } else if (energiaConsumida <= categorias.categoriaG.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria G"
-    } else if (energiaConsumida <= 20000) {
+    } else if (energiaConsumida <= categorias.categoriaH.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria H"
-    } else if (energiaConsumida <= 20000) {
+    } else if (energiaConsumida <= categorias.categoriaI.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria I"
-    } else if (energiaConsumida <= 20000) {
+    } else if (energiaConsumida <= categorias.categoriaJ.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria J"
-    } else if (energiaConsumida <= 20000) {
+    } else if (energiaConsumida <= categorias.categoriaK.energiaConsumida) {
         resultadoEnergiaConsumida = "Categoria K"
     } else {
         resultadoEnergiaConsumida = "Regimen general - IVA"
@@ -95,33 +98,38 @@ function calcularEnergiaConsumida() {
 
 function calcularAlquileresDevengados() {
     let alquileresDevengados = document.getElementById("alquileresDevengados").value;
+    (verificarNumero(alquileresDevengados)) ? alquileresDevengados = alquileresDevengados : alquileresDevengados = 0
     let resultadoAlquileresDevengados = ""
-    if (alquileresDevengados <= 230178.48) {
+    if (alquileresDevengados <= categorias.categoriaA.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria A"
-    } else if (alquileresDevengados <= 230178.48) {
+    } else if (alquileresDevengados <= categorias.categoriaB.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria B"
-    } else if (alquileresDevengados <= 460356.93) {
+    } else if (alquileresDevengados <= categorias.categoriaC.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria C"
-    } else if (alquileresDevengados <= 460356.93) {
+    } else if (alquileresDevengados <= categorias.categoriaD.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria D"
-    } else if (alquileresDevengados <= 573619.32) {
+    } else if (alquileresDevengados <= categorias.categoriaE.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria E"
-    } else if (alquileresDevengados <= 575446.12) {
+    } else if (alquileresDevengados <= categorias.categoriaF.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria F"
-    } else if (alquileresDevengados <= 690535.39) {
+    } else if (alquileresDevengados <= categorias.categoriaG.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria G"
-    } else if (alquileresDevengados <= 920713.84) {
+    } else if (alquileresDevengados <= categorias.categoriaH.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria H"
-    } else if (alquileresDevengados <= 920713.84) {
+    } else if (alquileresDevengados <= categorias.categoriaI.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria I"
-    } else if (alquileresDevengados <= 920713.84) {
+    } else if (alquileresDevengados <= categorias.categoriaJ.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria J"
-    } else if (alquileresDevengados <= 920713.84) {
+    } else if (alquileresDevengados <= categorias.categoriaK.alquileresDevengados) {
         resultadoAlquileresDevengados = "Categoria K"
     } else {
         resultadoAlquileresDevengados = "Regimen general - IVA"
     }
     return resultadoAlquileresDevengados
+}
+
+function verificarNumero(input){
+    return (!isNaN(input) && input != "")
 }
 
 function Persona(nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEnergiaConsumida, resultadoAlquileresDevengados) {
@@ -137,6 +145,7 @@ function Persona(nombre, resultadoIngBrutos, resultadoSupAfectada, resultadoEner
 }
 
 function filtrarPorCategoria() {
+    let contenido = ""
     let categoria = document.getElementById("filtroCategorias").value
     let clave = ""
     let filtrarPorCategoria = []
@@ -145,10 +154,12 @@ function filtrarPorCategoria() {
         filtrarPorCategoria.push(JSON.parse(localStorage.getItem(clave)))
     }
     filtrarPorCategoria = filtrarPorCategoria.filter((persona) => persona.resultadoCategoriaMaxima == categoria)
-    document.getElementById("resultadoFiltrado").innerHTML = "<p></P>"
+    contenido = "<div>"
     for (i = 0; i < filtrarPorCategoria.length; i++) {
-        document.getElementById("resultadoFiltrado").insertAdjacentHTML("beforeend", "<p>" + filtrarPorCategoria[i].nombre + "</p>")
+        contenido += "<p>" + filtrarPorCategoria[i].nombre + "</p>"
     }
+    contenido += "</div>"
+    mostrarFiltradoDeCategorias(categoria, contenido)
 }
 
 function calcularCategoriaMaxima() {
@@ -172,9 +183,40 @@ function calcularCategoriaMaxima() {
         categoriaMaxima = resultadoAlquileresDevengados
     }
     persona.setResultadoCategoriaMaxima(categoriaMaxima)
-    document.getElementById("resultadoCategoriaMaxima").insertAdjacentHTML("beforeend", "<p>" + nombreUsuario + ": " + categoriaMaxima + "</p>")
+    mostrarResultadoCategoria("Categoria Maxima", "El resultado de la categoria maxima para " + nombreUsuario + " es: " + categoriaMaxima)
     localStorage.setItem(nombreUsuario, JSON.stringify(persona))
 }
+
+function mostrarResultadoCategoria(titulo, texto) {
+    Swal.fire({
+        title: titulo,
+        text: texto,
+        icon: "info",
+        confirmButtonText: "OK",
+    })
+}
+
+function mostrarFiltradoDeCategorias(categoria, contenido){
+    Swal.fire({
+        title: "Usuarios con: " + categoria,
+        html: contenido,
+        icon: "info",
+        confirmButtonText: "OK",
+    });
+}
+
+let categorias = null
+
+fetch('./categoriasMonotributo.json')
+    .then( (response) => response.json())
+    .then( (data) => {
+        categorias = data
+    })
+    .catch( (error) => {
+        console.log("Fetch error: " + error)
+    })
+
+const lista = document.querySelector('#listado')
 
 let form = document.getElementById("calculadoraForm")
 
